@@ -1,0 +1,30 @@
+%p#notice= notice
+
+%p
+  %b First name:
+  = @practitioner.first_name
+%p
+  %b Last name:
+  = @practitioner.last_name
+%p
+  %b Department:
+  = @practitioner.department
+%p
+  %b Position:
+  = @practitioner.position
+%p
+  %b Place of work:
+  = @practitioner.place_of_work
+%p
+  %b Address:
+  = @practitioner.address
+%p
+  %b Longitude:
+  = @practitioner.longitude   
+%p
+  %b Latitude:
+  = @practitioner.latitude  
+
+= link_to 'Edit', edit_practitioner_path(@practitioner)
+\|
+= link_to 'Back', practitioners_path

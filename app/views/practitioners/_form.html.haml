@@ -1,0 +1,34 @@
+= form_for @practitioner do |f|
+  - if @practitioner.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@practitioner.errors.count, "error")} prohibited this practitioner from being saved:"
+      %ul
+        - @practitioner.errors.full_messages.each do |msg|
+          %li= msg
+
+  .field
+    = f.label :first_name
+    = f.text_field :first_name
+  .field
+    = f.label :last_name
+    = f.text_field :last_name
+  .field
+    = f.label :department
+    = f.text_field :department
+  .field
+    = f.label :position
+    = f.text_field :position
+  .field
+    = f.label :place_of_work
+    = f.text_field :place_of_work
+  .field
+    = f.label :address
+    = f.text_field :address  
+  .field
+    = f.label :longitude
+    = f.text_field :longitude
+  .field
+    = f.label :latitude
+    = f.text_field :latitude  
+  .actions
+    = f.submit 'Save'

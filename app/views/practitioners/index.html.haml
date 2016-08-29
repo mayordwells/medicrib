@@ -1,0 +1,58 @@
+/ <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCf3gaVzKrpPuItzLDEExDReBQBlRItFxg&callback=initialize"></script>
+
+<script
+src="http://maps.googleapis.com/maps/api/js?key=AIzaSyCf3gaVzKrpPuItzLDEExDReBQBlRItFxg">
+</script>
+<script src="//cdn.rawgit.com/mahnunchik/markerclustererplus/master/dist/markerclusterer.min.js"></script>
+<script src='//cdn.rawgit.com/printercu/google-maps-utility-library-v3-read-only/master/infobox/src/infobox_packed.js' type='text/javascript'></script> <!-- only if you need custom infoboxes -->
+
+
+%h3 Listing practitioners
+
+%table
+  %thead
+    %tr
+      %th First name
+      %th Last name
+      %th Department
+      %th Position
+      %th Place of work
+      %th Address
+      %th Longitude
+      %th Latitude
+
+  %tbody
+    - @practitioners.each do |practitioner|
+      %tr
+        %td= practitioner.first_name
+        %td= practitioner.last_name
+        %td= practitioner.department
+        %td= practitioner.position
+        %td= practitioner.place_of_work
+        %td= practitioner.address
+        %td= practitioner.longitude
+        %td= practitioner.latitude
+        %td= link_to 'Show', practitioner
+        %td= link_to 'Edit', edit_practitioner_path(practitioner)
+        %td= link_to 'Destroy', practitioner, :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+%br
+
+= link_to 'New Practitioner', new_practitioner_path
+
+%div{:style => 'width: 800px;'}
+  %div{:id => "map", :style => 'width: 800px; height: 400px;'}
+
+
+:javascript
+  var path;
+  handler = Gmaps.build('Google');
+  handler.buildMap({ provider: {}, internal: {id: 'map'}}, function(){
+    markers = handler.addMarkers("=#{raw @map_hash.to_json}"); 
+    //returns markers = handler.addMarkers("= [{"lat":14.554729,"lng":121.0244452,"infowindow":"abc"},{"lat":14.6760413,"lng":121.0437003,"infowindow":"ccc"}]");
+    for(var i=0; i < markers.length; i++) {
+      //path.push(new google.maps.LatLng(markers[i].lat, markers[i].lng));
+    }
+    handler.bounds.extendWith(markers);
+    handler.fitMapToBounds();
+  });

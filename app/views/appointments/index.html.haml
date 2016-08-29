@@ -1,0 +1,25 @@
+%h1 Listing appointments
+
+%table
+  %thead
+    %tr
+      %th Location
+      %th Patient name
+      %th Practitioner name
+      %th
+      %th
+      %th
+
+  %tbody
+    - @appointments.each do |appointment|
+      %tr
+        %td= appointment.location
+        %td= appointment.patient_name
+        %td= appointment.practitioner_name
+        %td= link_to 'Show', appointment
+        %td= link_to 'Edit', edit_appointment_path(appointment)
+        %td= link_to 'Destroy', appointment, :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+%br
+
+= link_to 'New Appointment', new_appointment_path

@@ -1,0 +1,103 @@
+<!-- Dropdown Structure -->
+<ul id='dropdown1' class='dropdown-content'>
+  <li><a href="#">Patient</a></li>
+    <li><a href="#">Doctor</a></li>
+    <li><a href="#">Hospital</a></li>
+    <li><a href="#">Diagnostic Laboratory</a></li>
+    <li class="divider"></li>
+    <li><a href="#">Spa & Salon</a></li>
+    <li><a href="#">Health & Wellness Center</a></li>
+</ul>
+
+<!-- Modal Structure Register Modal-->
+<div id="register-modal" class="modal">
+  <div class="modal-content">
+    <h4>Sign Up</h4>
+    <div class="row">
+      <form class="col s12">
+        <div class="row">
+          <div class="input-field col s6">
+            <input placeholder="Placeholder" id="first_name" type="text" class="validate">
+              <label for="first_name">First Name</label>
+          </div>
+          <div class="input-field col s6">
+            <input id="last_name" type="text" class="validate">
+              <label for="last_name">Last Name</label>
+          </div>
+        </div>
+        <div class="row">
+          <div class="input-field col s12">
+            <input id="password" type="password" class="validate">
+              <label for="password">Password</label>
+          </div>
+        </div>
+        <div class="row">
+          <div class="input-field col s12">
+            <input id="email" type="email" class="validate">
+              <label for="email">Email</label>
+          </div>
+        </div>
+      </form>
+    </div>       
+  </div>
+  <div class="modal-footer">
+    <a class="modal-action modal-close waves-effect waves-green btn-flat">Submit</a>
+  </div>
+</div>
+
+<!-- Modal Structure Login Modal-->
+<div id="login-modal" class="modal">
+  <div class="modal-content">
+    <h4>Login</h4>
+    <div class="row">
+      <form class="col s12">
+        <div class="row">
+          <div class="input-field col s12">
+            <input id="email" type="email" class="validate">
+              <label for="email">Email</label>
+          </div>
+        </div>
+        <div class="row">
+          <div class="input-field col s12">
+            <input id="password" type="password" class="validate">
+              <label for="password">Password</label>
+          </div>
+        </div>
+      </form>
+    </div>       
+  </div>
+  <div class="modal-footer">
+    <a class=" modal-action modal-close waves-effect waves-green btn-flat">Submit</a>
+  </div>
+</div>
+
+
+
+
+
+
+<header>
+  <nav class="navbar navbar-default z-depth-2" role="navigation">
+    <div class="nav-wrapper">
+        <%= link_to "MediCrib", root_path, :class=> "brand-logo" %>
+        
+        <ul class="right hide-on-med-and-down">
+
+          <li><a href="#about.html">About</a></li>
+          <li><a href="#privacy.html">Privacy</a></li>
+          <li><a href="#terms.html">Terms</a></li>
+          <% if user_signed_in? %>
+           <li> <%= link_to 'Sign Out', destroy_user_session_path, method:
+            :delete %></li>
+          <% else %>
+          <li><a href="#login-modal" class="waves-effect waves-light modal-trigger" data-target="login-modal">Login</a></li>
+          <li><a href="#register-modal" class="waves-effect waves-light modal-trigger" data-target="register-modal">Register</a></li>
+          <% end %>
+          <li>
+            <a class="dropdown-button" href="#!" onclick="Materialize.toast('Beta Version Invite Only', 4000)" data-activates="dropdown1">Services<i class="material-icons right">arrow_drop_down</i></a>
+          </li>
+        </ul>
+        
+      </div>
+  </nav>
+</header>

@@ -1,0 +1,2 @@
+json.extract! practitioner, :id, :first_name, :last_name, :department, :position, :place_of_work, :address, :longitude, :latitude :created_at, :updated_at
+json.url practitioner_url(practitioner, format: :json)
